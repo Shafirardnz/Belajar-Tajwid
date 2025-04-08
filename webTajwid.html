@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panduan Lengkap Tajwid Al-Qur'an</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            /* Warna dasar */
+            --hijau-tua: #004445;
+            --hijau-muda: #2C786C;
+            --kuning: #F8B400;
+            --krem: #FAF5E4;
+            --putih: #FFFFFF;
+            --biru: #3498DB;
+            --ungu: #6A3093;
+            --merah: #E74C3C;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            
+            /* Variabel tema */
+            --bg-color: var(--krem);
+            --text-color: #333;
+            --card-bg: var(--putih);
+            --card-text: #555;
+            --penjelasan-bg: #f9f9f9;
+            --soal-bg: var(--putih);
+        }
+
+        /* Tema gelap */
+        .dark-mode {
+            --bg-color: #121212;
+            --text-color: #f0f0f0;
+            --card-bg: #1e1e1e;
+            --card-text: #e0e0e0;
+            --penjelasan-bg: #2d2d2d;
+            --soal-bg: #1e1e1e;
+            --krem: #121212;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(135deg, var(--hijau-tua), var(--hijau-muda));
+            color: var(--putih);
+            padding: 30px 0;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        header h1 {
+            font-family: 'Amiri', serif;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* NAVIGASI */
+        nav {
+            background-color: var(--hijau-tua);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-mobile {
+            display: none;
+            color: var(--putih);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--putih);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin: 0 10px;
+        }
+
+        .nav-links a {
+            color: var(--putih);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 8px 15px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* KONTEN UTAMA */
+        section {
+            padding: 40px 0;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--hijau-tua);
+            font-size: 1.8rem;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--kuning);
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+
+        h3 {
+            color: var(--hijau-tua);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        /* MATERI CARDS */
+        .materi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .materi-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+            color: var(--text-color);
+        }
+
+        .materi-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-header {
+            background: linear-gradient(to right, var(--hijau-tua), var(--hijau-muda));
+            color: var(--putih);
+            padding: 15px;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-body p {
+            margin-bottom: 15px;
+            color: var(--card-text);
+            font-size: 0.95rem;
+        }
+
+        /* TOMBOL */
+        .btn {
+            display: inline-block;
+            background-color: var(--kuning);
+            color: #333;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .btn:hover {
+            background-color: #e0a800;
+            transform: scale(1.05);
+        }
+
+        /* CONTOH TAJWID */
+        .contoh-tajwid {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .hukum-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .hukum-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: var(--card-bg);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .hukum-tajwid {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-right: 8px;
+            margin-bottom: 8px;
+            color: white;
+            font-size: 0.85rem;
+        }
+
+        .arabic {
+            font-family: 'Amiri', serif;
+            font-size: 1.8rem;
+            text-align: right;
+            direction: rtl;
+            margin: 12px 0;
+            line-height: 1.8;
+        }
+
+        .penjelasan {
+            background-color: var(--penjelasan-bg);
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 10px;
+            border-left: 4px solid var(--kuning);
+            font-size: 0.9rem;
+        }
+
+        /* SOAL LATIHAN */
+        .soal-container {
+            background: var(--soal-bg);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .soal-item {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed #ddd;
+        }
+
+        .soal-item:last-child {
+            border-bottom: none;
+        }
+
+        .soal-text {
+            font-weight: 600;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+        }
+
+        .jawaban-option {
+            display: block;
+            margin: 8px 0;
+            padding: 10px 12px;
+            background: var(--penjelasan-bg);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--text-color);
+            font-size: 0.9rem;
+        }
+
+        .jawaban-option:hover {
+            background: var(--card-bg);
+        }
+
+        .jawaban-option input {
+            margin-right: 8px;
+        }
+
+        .btn-cek {
+            background-color: var(--biru);
+            color: white;
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        .btn-cek:hover {
+            background-color: #2980B9;
+        }
+
+        .hasil-jawaban {
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 8px;
+            display: none;
+            font-size: 0.9rem;
+        }
+
+        .benar {
+            background-color: rgba(40, 167, 69, 0.2);
+            color: #155724;
+            border-left: 4px solid #28a745;
+        }
+
+        .salah {
+            background-color: rgba(220, 53, 69, 0.2);
+            color: #721c24;
+            border-left: 4px solid #dc3545;
+        }
+
+        /* WARNA HUKUM TAJWID */
+        .izhar { background-color: #2ecc71; }
+        .idgham { background-color: #3498db; }
+        .ikhfa { background-color: #9b59b6; }
+        .iqlab { background-color: #e74c3c; }
+        .mim-mati { background-color: #f39c12; }
+        .qalqalah { background-color: #1abc9c; }
+        .mad { background-color: #d35400; }
+        .ghunnah { background-color: #34495e; }
+
+        /* FOOTER */
+        footer {
+            background-color: var(--hijau-tua);
+            color: var(--putih);
+            text-align: center;
+            padding: 25px 0;
+            margin-top: 40px;
+            font-size: 0.9rem;
+        }
+
+        /* TOMBOL TOGGLE THEME */
+        .theme-toggle {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: linear-gradient(to right, var(--hijau-tua), var(--hijau-muda));
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            header p {
+                font-size: 1rem;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .logo-mobile {
+                display: block;
+                margin-bottom: 15px;
+            }
+            
+            .menu-toggle {
+                display: block;
+                position: absolute;
+                top: 15px;
+                right: 15px;
+            }
+            
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                margin-top: 15px;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 5px 0;
+            }
+            
+            .nav-links a {
+                display: block;
+                padding: 10px;
+                border-radius: 5px;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+                margin-bottom: 25px;
+            }
+            
+            h2::after {
+                width: 50px;
+                height: 3px;
+                margin: 10px auto;
+            }
+            
+            section {
+                padding: 30px 0;
+            }
+            
+            .theme-toggle {
+                bottom: 15px;
+                right: 15px;
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+            
+            .arabic {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Panduan Lengkap Tajwid</h1>
+            <p>Memahami Seluruh Hukum Bacaan Al-Qur'an dengan Benar</p>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container nav-container">
+            <div class="logo-mobile">Panduan Tajwid</div>
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#nun-mati">Nun Mati/Tanwin</a></li>
+                <li><a href="#mim-mati">Mim Mati</a></li>
+                <li><a href="#mad">Hukum Mad</a></li>
+                <li><a href="#latihan">Latihan</a></li>
+                <li><a href="#tentang">Tentang</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- HUKUM NUN MATI DAN TANWIN -->
+        <section id="nun-mati">
+            <h2>Hukum Nun Mati dan Tanwin</h2>
+            <div class="hukum-container">
+                <div class="hukum-item">
+                    <span class="hukum-tajwid izhar">Izhar Halqi</span>
+                    <p class="arabic">إِنَّ ٱلَّذِينَ كَفَرُوا۟ سَوَآءٌ عَلَيْهِمْ ءَأَنذَرْتَهُمْ أَمْ لَمْ تُنذِرْهُمْ لَا يُؤْمِنُونَ</p>
+                    <div class="penjelasan">
+                        <p><strong>Pengertian:</strong> Nun mati (نْ) atau tanwin (ً ٍ ٌ) bertemu dengan huruf halq (ء ه ع ح غ خ)</p>
+                        <p><strong>Cara baca:</strong> Dibaca jelas tanpa dengung</p>
+                        <p><strong>Contoh:</strong> نْ + ء = إِنَّ, نْ + ه = مِنْهُمْ</p>
+                    </div>
+                </div>
+
+                <div class="hukum-item">
+                    <span class="hukum-tajwid idgham">Idgham Bighunnah</span>
+                    <p class="arabic">مِن رَّبِّهِمْ</p>
+                    <div class="penjelasan">
+                        <p><strong>Pengertian:</strong> Nun mati/tanwin bertemu huruf ي ن م و (dengan dengung)</p>
+                        <p><strong>Cara baca:</strong> Dimasukkan ke huruf berikutnya dengan dengung 2 harakat</p>
+                        <p><strong>Contoh:</strong> مِنْ رَّبِّهِمْ dibaca "mirrabbihim"</p>
+                    </div>
+                </div>
+
+                <div class="hukum-item">
+                    <span class="hukum-tajwid ikhfa">Ikhfa Haqiqi</span>
+                    <p class="arabic">وَٱصْبِرْ حَتَّىٰ يَحْكُمَ ٱللَّهُ</p>
+                    <div class="penjelasan">
+                        <p><strong>Pengertian:</strong> Nun mati/tanwin bertemu 15 huruf selain izhar, idgham, dan iqlab</p>
+                        <p><strong>Cara baca:</strong> Dibaca samar-samar dengan dengung 2 harakat</p>
+                        <p><strong>Contoh:</strong> أَن صَدُّوكُمْ dibaca "an shadduukum"</p>
+                    </div>
+                </div>
+
+                <div class="hukum-item">
+                    <span class="hukum-tajwid iqlab">Iqlab</span>
+                    <p class="arabic">لَيُنۢبَذَنَّ</p>
+                    <div class="penjelasan">
+                        <p><strong>Pengertian:</strong> Nun mati/tanwin bertemu huruf ba (ب)</p>
+                        <p><strong>Cara baca:</strong> Diubah menjadi mim dengan dengung</p>
+                        <p><strong>Contoh:</strong> مِنۢ بَعْدِ dibaca "mim ba'di"</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- HUKUM MIM MATI -->
+        <section id="mim-mati">
+            <h2>Hukum Mim Mati</h2>
+            <div class="hukum-container">
+                <div class="hukum-item">
+                    <span class="hukum-tajwid mim-mati">Ikhfa Syafawi</span>
+                    <p class="arabic">تَرْمِيهِم بِحِجَارَةٍ</p>
+                    <div class="penjelasan">
+                        <p><strong>Pengertian:</strong> Mim mati (مْ) bertemu huruf ba (ب)</p>
+                        <p><strong>Cara baca:</strong> Dibaca samar-samar dengan dengung</p>
+                        <p><strong>Contoh:</strong> تَرْمِيهِم بِحِجَارَةٍ dibaca "tarmiihim bihijaaratin"</p>
+                    </div>
+                </div>
+
+                <div class="hukum-item">
+                    <span class="hukum-tajwid mim-mati">Idgham Mimi</span>
+                    <p class="arabic">لَهُم مَّا يَشَاءُونَ</p>
+                    <div class="penjelasan">
+                        <p><strong>Pengertian:</strong> Mim mati bertemu mim (م)</p>
+                        <p><strong>Cara baca:</strong> Dimasukkan ke mim berikutnya dengan dengung</p>
+                        <p><strong>Contoh:</strong> لَهُم مَّا dibaca "lahummaa"</p>
+                    </div>
+                </div>
+
+                <div class="hukum-item">
+                    <span class="hukum-tajwid mim-mati">Izhar Syafawi</span>
+                    <p class="arabic">وَأَمَّا</p>
+                    <div class="penjelasan">
+                        <p><strong>Pengertian:</strong> Mim mati bertemu selain ba dan mim</p>
+                        <p><strong>Cara baca:</strong> Dibaca jelas tanpa dengung</p>
+                        <p><strong>Contoh:</strong> أَلَمْ تَرَ dibaca "alam tara"</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- HUKUM MAD -->
+        <section id="mad">
+            <h2>Hukum Mad</h2>
+            <div class="hukum-container">
+                <div class="hukum-item">
+                    <span class="hukum-tajwid mad">Mad Asli</span>
+                    <p class="arabic">قَالُوا۟ رَبَّنَا</p>
+                    <div class="penjelasan">
+                        <p><strong>Pengertian:</strong> Huruf mad (ا و ي) yang tidak diikuti hamzah atau sukun</p>
+                        <p><strong>Cara baca:</strong> Panjang 2 harakat</p>
+                        <p><strong>Contoh:</strong> نُوحِيْهَا, قَالُوا۟</p>
+                    </div>
+                </div>
+
+                <div class="hukum-item">
+                    <span class="hukum-tajwid mad">Mad Wajib Muttasil</span>
+                    <p class="arabic">جَآءَ</p>
+                    <div class="penjelasan">
+                        <p><strong>Pengertian:</strong> Mad bertemu hamzah dalam satu kata</p>
+                        <p><strong>Cara baca:</strong> Panjang 4/5 harakat</p>
+                        <p><strong>Contoh:</strong> سَوَآءٌ, تَجْرِيْٓ</p>
+                    </div>
+                </div>
+
+                <div class="hukum-item">
+                    <span class="hukum-tajwid mad">Mad Jaiz Munfasil</span>
+                    <p class="arabic">إِنَّآ أَعْطَيْنَٰكَ</p>
+                    <div class="penjelasan">
+                        <p><strong>Pengertian:</strong> Mad bertemu hamzah di kata berbeda</p>
+                        <p><strong>Cara baca:</strong> Boleh 2, 4, atau 6 harakat</p>
+                        <p><strong>Contoh:</strong> مَآ أَرَادَ, يٰٓأَيُّهَا</p>
+                    </div>
+                </div>
+
+                <div class="hukum-item">
+                    <span class="hukum-tajwid mad">Mad 'Aridh Lissukun</span>
+                    <p class="arabic">ٱلْعٰلَمِينَ</p>
+                    <div class="penjelasan">
+                        <p><strong>Pengertian:</strong> Mad bertemu waqaf (berhenti)</p>
+                        <p><strong>Cara baca:</strong> Boleh 2, 4, atau 6 harakat saat waqaf</p>
+                        <p><strong>Contoh:</strong> ٱلرَّحْمٰنِ ketika diwaqafkan</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LATIHAN SOAL -->
+        <section id="latihan">
+            <h2>Latihan Soal Tajwid</h2>
+            <div class="soal-container">
+                <div class="soal-item">
+                    <div class="soal-text">
+                        1. Perhatikan bacaan berikut: <span class="arabic" style="display: inline;">مِن رَّبِّهِمْ</span>. Hukum tajwid yang berlaku adalah...
+                    </div>
+                    <label class="jawaban-option">
+                        <input type="radio" name="soal1" value="a"> Izhar Halqi
+                    </label>
+                    <label class="jawaban-option">
+                        <input type="radio" name="soal1" value="b"> Idgham Bighunnah
+                    </label>
+                    <label class="jawaban-option">
+                        <input type="radio" name="soal1" value="c"> Ikhfa Haqiqi
+                    </label>
+                    <div id="hasil1" class="hasil-jawaban"></div>
+                </div>
+
+                <div class="soal-item">
+                    <div class="soal-text">
+                        2. Bacaan <span class="arabic" style="display: inline;">تَرْمِيهِم بِحِجَارَةٍ</span> mengandung hukum tajwid...
+                    </div>
+                    <label class="jawaban-option">
+                        <input type="radio" name="soal2" value="a"> Ikhfa Syafawi
+                    </label>
+                    <label class="jawaban-option">
+                        <input type="radio" name="soal2" value="b"> Idgham Mimi
+                    </label>
+                    <label class="jawaban-option">
+                        <input type="radio" name="soal2" value="c"> Izhar Syafawi
+                    </label>
+                    <div id="hasil2" class="hasil-jawaban"></div>
+                </div>
+
+                <div class="soal-item">
+                    <div class="soal-text">
+                        3. Ketika nun mati bertemu dengan huruf ba (ب), hukum tajwid yang berlaku adalah...
+                    </div>
+                    <label class="jawaban-option">
+                        <input type="radio" name="soal3" value="a"> Iqlab
+                    </label>
+                    <label class="jawaban-option">
+                        <input type="radio" name="soal3" value="b"> Idgham Bila Ghunnah
+                    </label>
+                    <label class="jawaban-option">
+                        <input type="radio" name="soal3" value="c"> Izhar Halqi
+                    </label>
+                    <div id="hasil3" class="hasil-jawaban"></div>
+                </div>
+
+                <div class="soal-item">
+                    <div class="soal-text">
+                        4. Huruf-huruf qalqalah adalah...
+                    </div>
+                    <label class="jawaban-option">
+                        <input type="radio" name="soal4" value="a"> ق ط ب ج د
+                    </label>
+                    <label class="jawaban-option">
+                        <input type="radio" name="soal4" value="b"> ا و ي
+                    </label>
+                    <label class="jawaban-option">
+                        <input type="radio" name="soal4" value="c"> ء ه ع ح غ خ
+                    </label>
+                    <div id="hasil4" class="hasil-jawaban"></div>
+                </div>
+
+                <div class="soal-item">
+                    <div class="soal-text">
+                        5. Bacaan <span class="arabic" style="display: inline;">لَيُنۢبَذَنَّ</span> mengandung hukum tajwid...
+                    </div>
+                    <label class="jawaban-option">
+                        <input type="radio" name="soal5" value="a"> Ikhfa Haqiqi
+                    </label>
+                    <label class="jawaban-option">
+                        <input type="radio" name="soal5" value="b"> Iqlab
+                    </label>
+                    <label class="jawaban-option">
+                        <input type="radio" name="soal5" value="c"> Idgham Mimi
+                    </label>
+                    <div id="hasil5" class="hasil-jawaban"></div>
+                </div>
+
+                <div class="soal-item">
+                    <div class="soal-text">
+                        6. Berikut ini yang merupakan contoh bacaan Mad Wajib Muttasil adalah...
+                    </div>
+                    <label class="jawaban-option">
+                        <input type="radio" name="soal6" value="a"> <span class="arabic" style="display: inline;">جَآءَ</span>
+                    </label>
+                    <label class="jawaban-option">
+                        <input type="radio" name="soal6" value="b"> <span class="arabic" style="display: inline;">قَالُوا۟ رَبَّنَا</span>
+                    </label>
+                    <label class="jawaban-option">
+                        <input type="radio" name="soal6" value="c"> <span class="arabic" style="display: inline;">ٱلْعٰلَمِينَ</span>
+                    </label>
+                    <div id="hasil6" class="hasil-jawaban"></div>
+                </div>
+
+                <div class="soal-item">
+                    <div class="soal-text">
+                        7. Bacaan <span class="arabic" style="display: inline;">إِنَّآ أَعْطَيْنَٰكَ</span> mengandung hukum mad...
+                    </div>
+                    <label class="jawaban-option">
+                        <input type="radio" name="soal7" value="a"> Mad Jaiz Munfasil
+                    </label>
+                    <label class="jawaban-option">
+                        <input type="radio" name="soal7" value="b"> Mad Wajib Muttasil
+                    </label>
+                    <label class="jawaban-option">
+                        <input type="radio" name="soal7" value="c"> Mad 'Aridh Lissukun
+                    </label>
+                    <div id="hasil7" class="hasil-jawaban"></div>
+                </div>
+
+                <div class="soal-item">
+                    <div class="soal-text">
+                        8. Huruf-huruf izhar halqi adalah...
+                    </div>
+                    <label class="jawaban-option">
+                        <input type="radio" name="soal8" value="a"> ء ه ع ح غ خ
+                    </label>
+                    <label class="jawaban-option">
+                        <input type="radio" name="soal8" value="b"> ي ن م و
+                    </label>
+                    <label class="jawaban-option">
+                        <input type="radio" name="soal8" value="c"> ت ث ج د ذ
+                    </label>
+                    <div id="hasil8" class="hasil-jawaban"></div>
+                </div>
+
+                <div class="soal-item">
+                    <div class="soal-text">
+                        9. Ketika mim mati bertemu dengan huruf mim (م), hukum tajwid yang berlaku adalah...
+                    </div>
+                    <label class="jawaban-option">
+                        <input type="radio" name="soal9" value="a"> Idgham Mimi
+                    </label>
+                    <label class="jawaban-option">
+                        <input type="radio" name="soal9" value="b"> Ikhfa Syafawi
+                    </label>
+                    <label class="jawaban-option">
+                        <input type="radio" name="soal9" value="c"> Izhar Syafawi
+                    </label>
+                    <div id="hasil9" class="hasil-jawaban"></div>
+                </div>
+
+                <div class="soal-item">
+                    <div class="soal-text">
+                        10. Bacaan <span class="arabic" style="display: inline;">وَٱصْبِرْ حَتَّىٰ يَحْكُمَ ٱللَّهُ</span> mengandung hukum tajwid...
+                    </div>
+                    <label class="jawaban-option">
+                        <input type="radio" name="soal10" value="a"> Ikhfa Haqiqi
+                    </label>
+                    <label class="jawaban-option">
+                        <input type="radio" name="soal10" value="b"> Idgham Bighunnah
+                    </label>
+                    <label class="jawaban-option">
+                        <input type="radio" name="soal10" value="c"> Iqlab
+                    </label>
+                    <div id="hasil10" class="hasil-jawaban"></div>
+                </div>
+
+                <div class="soal-item">
+                    <div class="soal-text">
+                        11. Panjang bacaan Mad Asli adalah...
+                    </div>
+                    <label class="jawaban-option">
+                        <input type="radio" name="soal11" value="a"> 2 harakat
+                    </label>
+                    <label class="jawaban-option">
+                        <input type="radio" name="soal11" value="b"> 4 harakat
+                    </label>
+                    <label class="jawaban-option">
+                        <input type="radio" name="soal11" value="c"> 6 harakat
+                    </label>
+                    <div id="hasil11" class="hasil-jawaban"></div>
+                </div>
+
+                <div class="soal-item">
+                    <div class="soal-text">
+                        12. Bacaan <span class="arabic" style="display: inline;">لَهُم مَّا يَشَاءُونَ</span> mengandung hukum tajwid...
+                    </div>
+                    <label class="jawaban-option">
+                        <input type="radio" name="soal12" value="a"> Idgham Mimi
+                    </label>
+                    <label class="jawaban-option">
+                        <input type="radio" name="soal12" value="b"> Ikhfa Syafawi
+                    </label>
+                    <label class="jawaban-option">
+                        <input type="radio" name="soal12" value="c"> Izhar Syafawi
+                    </label>
+                    <div id="hasil12" class="hasil-jawaban"></div>
+                </div>
+
+                <div class="soal-item">
+                    <div class="soal-text">
+                        13. Berikut ini yang merupakan contoh bacaan ghunnah adalah...
+                    </div>
+                    <label class="jawaban-option">
+                        <input type="radio" name="soal13" value="a"> Bacaan nun bertasydid atau mim bertasydid
+                    </label>
+                    <label class="jawaban-option">
+                        <input type="radio" name="soal13" value="b"> Bacaan qalqalah
+                    </label>
+                    <label class="jawaban-option">
+                        <input type="radio" name="soal13" value="c"> Bacaan mad
+                    </label>
+                    <div id="hasil13" class="hasil-jawaban"></div>
+                </div>
+
+                <div class="soal-item">
+                    <div class="soal-text">
+                        14. Bacaan <span class="arabic" style="display: inline;">ٱلْعٰلَمِينَ</span> ketika diwaqafkan mengandung hukum...
+                    </div>
+                    <label class="jawaban-option">
+                        <input type="radio" name="soal14" value="a"> Mad 'Aridh Lissukun
+                    </label>
+                    <label class="jawaban-option">
+                        <input type="radio" name="soal14" value="b"> Mad Jaiz Munfasil
+                    </label>
+                    <label class="jawaban-option">
+                        <input type="radio" name="soal14" value="c"> Mad Wajib Muttasil
+                    </label>
+                    <div id="hasil14" class="hasil-jawaban"></div>
+                </div>
+            
+                <button class="btn btn-cek" onclick="cekJawaban()">Cek Jawaban</button>
+            </div>
+        </section>
+
+        <!-- TENTANG -->
+        <section id="tentang">
+            <h2>Tentang</h2>
+            <div class="penjelasan">
+                <p><strong>Tujuan:</strong> Website ini dibuat sebagai panduan lengkap untuk memahami hukum tajwid dalam bacaan Al-Qur'an. Diharapkan dapat membantu pembaca dalam belajar dan mengaplikasikan tajwid dengan benar.</p>
+                <p><strong>Pengembang:</strong></p>
+                <ul style="list-style-type: none; padding-left: 0;">
+                    <li><i class="fas fa-user" style="margin-right: 8px;"></i> Frisheila Martha Apsari</li>
+                    <li><i class="fas fa-user" style="margin-right: 8px;"></i> Maydwi Marsyahada</li>
+                    <li><i class="fas fa-user" style="margin-right: 8px;"></i> Naura Septiarayyani Ramadhani</li>
+                    <li><i class="fas fa-user" style="margin-right: 8px;"></i> Shafira Ardaneza Azahrah</li>                                              
+                    <li><i class="fas fa-user" style="margin-right: 8px;"></i> Siska Ayu Marshanda</li>                                              
+                </ul>
+                <p>Website ini adalah hasil kolaborasi dari beberapa pengembang yang diberi tugas untuk keperluan naik kelas oleh sekolahnya.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Panduan Lengkap Tajwid Al-Qur'an</p>
+            <p>Eugene Dev </p>
+            <p>Sumber referensi: Buku Tajwid dan Mushaf Al-Qur'an</p>
+        </div>
+    </footer>
+
+    <script>
+        // Fungsi untuk mode gelap/terang
+        document.addEventListener('DOMContentLoaded', function() {
+            // Buat tombol toggle
+            const themeToggleBtn = document.createElement('button');
+            themeToggleBtn.className = 'theme-toggle';
+            themeToggleBtn.innerHTML = '<i class="fas fa-moon"></i>';
+            document.body.appendChild(themeToggleBtn);
+            
+            // Cek preferensi tema
+            const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+            const currentTheme = localStorage.getItem('theme');
+            
+            // Terapkan tema
+            if (currentTheme === 'dark' || (!currentTheme && prefersDarkScheme.matches)) {
+                document.body.classList.add('dark-mode');
+                themeToggleBtn.innerHTML = '<i class="fas fa-sun"></i>';
+            }
+            
+            // Toggle tema
+            themeToggleBtn.addEventListener('click', function() {
+                document.body.classList.toggle('dark-mode');
+                const isDark = document.body.classList.contains('dark-mode');
+                themeToggleBtn.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            });
+            
+            // Mobile menu toggle
+            const menuToggle = document.getElementById('menuToggle');
+            const navLinks = document.getElementById('navLinks');
+            
+            menuToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                menuToggle.innerHTML = navLinks.classList.contains('active') 
+                    ? '<i class="fas fa-times"></i>' 
+                    : '<i class="fas fa-bars"></i>';
+            });
+            
+            // Tutup menu saat mengklik link
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                });
+            });
+        });
+
+        // Fungsi cek jawaban
+        function cekJawaban() {
+            // Jawaban benar
+            const kunciJawaban = {
+                soal1: "b",
+                soal2: "a", 
+                soal3: "a",
+                soal4: "a",
+                soal5: "b",
+                soal6: "a",
+                soal7: "a",
+                soal8: "a",
+                soal9: "a",
+                soal10: "a",
+                soal11: "a",
+                soal12: "a",
+                soal13: "a",
+                soal14: "a"
+            };
+
+            // Cek setiap soal
+            for (let i = 1; i <= 14; i++) {
+                const selectedOption = document.querySelector(`input[name="soal${i}"]:checked`);
+                const resultDiv = document.getElementById(`hasil${i}`);
+                
+                if (selectedOption) {
+                    if (selectedOption.value === kunciJawaban[`soal${i}`]) {
+                        resultDiv.innerHTML = "<strong>Benar!</strong> Jawaban Anda tepat.";
+                        resultDiv.className = "hasil-jawaban benar";
+                    } else {
+                        resultDiv.innerHTML = "<strong>Kurang tepat.</strong> Silakan pelajari kembali materinya.";
+                        resultDiv.className = "hasil-jawaban salah";
+                    }
+                    resultDiv.style.display = "block";
+                } else {
+                    alert(`Silakan pilih jawaban untuk soal nomor ${i}`);
+                    return;
+                }
+            }
+            
+            // Scroll ke hasil jawaban
+            document.getElementById('hasil1').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
